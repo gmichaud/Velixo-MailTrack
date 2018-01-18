@@ -24,8 +24,7 @@ namespace VX.MailTrack.Webhook
             RouteTable.Routes.Add(new Route($"{MailTrackRouteBase}/delivery", _container.Resolve<RouteHandler<DeliveryRequestHandler>>()));
             RouteTable.Routes.Add(new Route($"{MailTrackRouteBase}/bounce", _container.Resolve<RouteHandler<BounceRequestHandler>>()));
             RouteTable.Routes.Add(new Route($"{MailTrackRouteBase}/open", _container.Resolve<RouteHandler<OpenRequestHandler>>()));
-            RouteTable.Routes.Add(new Route($"{MailTrackRouteBase}/click", _container.Resolve<RouteHandler<clickRequestHandler>>()));
-
+            RouteTable.Routes.Add(new Route($"{MailTrackRouteBase}/click", _container.Resolve<RouteHandler<ClickRequestHandler>>()));
         }
     }
 }

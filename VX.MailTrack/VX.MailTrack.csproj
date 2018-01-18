@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Webhook\DeliveryData.cs" />
     <Compile Include="Webhook\OpenRequestHandler.cs" />
     <Compile Include="Webhook\ClickRequestHandler.cs" />
     <Compile Include="Webhook\BounceRequestHandler.cs" />
