@@ -10,20 +10,11 @@ using System.Web;
 
 namespace VX.MailTrack.Webhook
 {
-    class BounceRequestHandler : IHttpHandler
+    class BounceRequestHandler : PostmarkWebhookRequestHandlerBase<BounceData>
     {
-        private readonly ILifetimeScope _container;
-
-        public BounceRequestHandler(ILifetimeScope container)
+        public override void ProcessRequest(BounceData requestData)
         {
-            _container = container;
-        }
-
-        public bool IsReusable => true;
-
-        public void ProcessRequest(HttpContext context)
-        {
-            context.Response.Write("<H1>Bounce</H1>");
+            throw new NotImplementedException();
         }
     }
 }

@@ -11,31 +11,18 @@ using System.Web;
 
 namespace VX.MailTrack.Webhook
 {
-    class DeliveryRequestHandler : IHttpHandler
+    class DeliveryRequestHandler : PostmarkWebhookRequestHandlerBase<DeliveryData>
     {
-        private readonly ILifetimeScope _container;
-
-        public DeliveryRequestHandler(ILifetimeScope container)
+        public override void ProcessRequest(DeliveryData requestData)
         {
-            _container = container;
-        }
 
-        public bool IsReusable => true;
-
-        public void ProcessRequest(HttpContext context)
-        {
-            string jsonString = null;
-
-            context.Request.InputStream.Position = 0;
-            using (var inputStream = new StreamReader(context.Request.InputStream))
-            {
-                jsonString = inputStream.ReadToEnd();
-            }
-
-            var deliveryData = JsonConvert.DeserializeObject<DeliveryData>(jsonString);
-
-            context.Response.StatusCode = 204; //No data;
-            context.Response.End();
+            //Test with curl:
+            /*
+             curl http://admin%40panova:admin@198.48.200.206:8888/AcumaticaDemo60/mailtrack/delivery \
+              -X POST \
+              -H "Content-Type: application/json" \
+              -d '{ "ServerID": 23, "MessageID": "883953f4-6105-42a2-a16a-77a8eac79483", "Recipient": "john@example.com", "Tag": "welcome-email", "DeliveredAt": "2014-08-01T13:28:10.2735393-04:00", "Details": "Test delivery webhook details" }'
+            */
         }
     }
 }

@@ -58,11 +58,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Webhook\BounceData.cs" />
+    <Compile Include="Webhook\ClickData.cs" />
     <Compile Include="Webhook\DeliveryData.cs" />
+    <Compile Include="Webhook\OpenData.cs" />
     <Compile Include="Webhook\OpenRequestHandler.cs" />
     <Compile Include="Webhook\ClickRequestHandler.cs" />
     <Compile Include="Webhook\BounceRequestHandler.cs" />
     <Compile Include="Webhook\DeliveryRequestHandler.cs" />
+    <Compile Include="Webhook\PostmarkWebhookRequestHandlerBase.cs" />
     <Compile Include="Webhook\RouteHandler.cs" />
     <Compile Include="ServiceRegistration.cs" />
     <Compile Include="Webhook\RouteInitializer.cs" />

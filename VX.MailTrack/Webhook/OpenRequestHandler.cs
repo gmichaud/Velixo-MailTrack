@@ -10,20 +10,11 @@ using System.Web;
 
 namespace VX.MailTrack.Webhook
 {
-    class OpenRequestHandler : IHttpHandler
+    class OpenRequestHandler : PostmarkWebhookRequestHandlerBase<OpenData>
     {
-        private readonly ILifetimeScope _container;
-
-        public OpenRequestHandler(ILifetimeScope container)
+        public override void ProcessRequest(OpenData requestData)
         {
-            _container = container;
-        }
-
-        public bool IsReusable => true;
-
-        public void ProcessRequest(HttpContext context)
-        {
-            context.Response.Write("<H1>Open</H1>");
+            throw new NotImplementedException();
         }
     }
 }
