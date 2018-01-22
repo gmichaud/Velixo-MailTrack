@@ -15,10 +15,7 @@ namespace VX.MailTrack
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterGeneric(typeof(Webhook.RouteHandler<>)).InstancePerDependency();
-            builder.RegisterType<Webhook.DeliveryRequestHandler>().SingleInstance();
-            builder.RegisterType<Webhook.BounceRequestHandler>().SingleInstance();
-            builder.RegisterType<Webhook.OpenRequestHandler>().SingleInstance();
-            builder.RegisterType<Webhook.ClickRequestHandler>().SingleInstance();
+            builder.RegisterType<Webhook.SendGrid.EventRequestHandler>().SingleInstance();
             builder.ActivateOnApplicationStart<Webhook.RouteInitializer>(e => e.InitializeRoutes());
 
             builder

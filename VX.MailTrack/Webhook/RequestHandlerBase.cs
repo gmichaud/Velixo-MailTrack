@@ -11,7 +11,7 @@ using System.Web;
 
 namespace VX.MailTrack.Webhook
 {
-    abstract class PostmarkWebhookRequestHandlerBase<T> : IHttpHandler
+    abstract class RequestHandlerBase<T> : IHttpHandler
     {
         public bool IsReusable => true;
 

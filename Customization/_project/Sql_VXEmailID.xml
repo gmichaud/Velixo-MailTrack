@@ -1,0 +1,12 @@
+﻿<Sql TableName="VXEmailID" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="VXEmailID">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="RemoteMessageID" type="VarChar(255)" />
+  <col name="InternalMessageID" type="VarChar(255)" />
+  <index name="VXEmailID_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="RemoteMessageID" />
+    <col name="InternalMessageID" />
+  </index>
+</table>]]></CDATA>
+</Sql>

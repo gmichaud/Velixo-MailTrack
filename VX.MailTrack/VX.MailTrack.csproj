@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VX.MailTrack</RootNamespace>
     <AssemblyName>VX.MailTrack</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,9 @@
     <Reference Include="PX.Export">
       <HintPath>..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\Bin\PX.Export.dll</HintPath>
     </Reference>
+    <Reference Include="PX.Objects">
+      <HintPath>..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\Bin\PX.Objects.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -57,16 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CREmailActivityMaintExt.cs" />
+    <Compile Include="DAC\VXEMailEvent.cs" />
+    <Compile Include="DAC\VXEmailID.cs" />
+    <Compile Include="EmailEventProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Webhook\BounceData.cs" />
-    <Compile Include="Webhook\ClickData.cs" />
-    <Compile Include="Webhook\DeliveryData.cs" />
-    <Compile Include="Webhook\OpenData.cs" />
-    <Compile Include="Webhook\OpenRequestHandler.cs" />
-    <Compile Include="Webhook\ClickRequestHandler.cs" />
-    <Compile Include="Webhook\BounceRequestHandler.cs" />
-    <Compile Include="Webhook\DeliveryRequestHandler.cs" />
-    <Compile Include="Webhook\PostmarkWebhookRequestHandlerBase.cs" />
+    <Compile Include="Webhook\SendGrid\SendGridEvent.cs" />
+    <Compile Include="Webhook\SendGrid\EventRequestHandler.cs" />
+    <Compile Include="Webhook\RequestHandlerBase.cs" />
     <Compile Include="Webhook\RouteHandler.cs" />
     <Compile Include="ServiceRegistration.cs" />
     <Compile Include="Webhook\RouteInitializer.cs" />
