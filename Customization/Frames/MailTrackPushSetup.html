@@ -1,10 +1,114 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Velixo MailTrack Notifications</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        html, body {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            min-height: auto;
+            box-sizing: border-box;
+        }
+
+        header {
+            padding: 115px 0 32px 0;
+            background-color: #2F6493;
+            color: white;
+        }
+
+            main, header > h1 {
+                padding: 0 16px;
+                max-width: 760px;
+                box-sizing: border-box;
+                margin: 0 auto;
+            }
+
+        main {
+            margin: 24px auto;
+            box-sizing: border-box;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            background-color: #EEEEEE;
+            padding: 16px;
+        }
+
+            pre code {
+                word-break: break-word;
+            }
+
+        .is-invisible {
+            opacity: 0;
+        }
+
+        .subscription-details {
+            transition: opacity 1s;
+        }
+
+        @media (max-width: 600px) {
+            header > h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello!</h1>
+
+    <header>
+        <h1>Velixo MailTrack Notifications</h1>
+    </header>
+
+    <main>
+        <section class="js-push-notsupported is-invisible">
+            <p>
+                Your browser does not support Push Notifications.
+            </p>
+        </section>
+        <section class="js-push-available is-invisible">
+            <p>
+                When you enable Push Notifications, Acumatica will notify you about events related to the emails you send from Acumatica such as:
+                <ul>
+                    <li>When an email is delivered</li>
+                    <li>When an email bounces</li>
+                    <li>When an email is opened by the recipient</li>
+                    <li>When a link inside an email is clicked</li>
+                </ul>
+                A detailed log of all the events of an email is kept in the Tracking tab of the Email Activity page.
+            </p>
+            <p>
+                <b>Note:</b>
+                Notifications are activated per device. To receive notifications on multiple devices, sign in on each device, enable notifications,
+                and make sure you're online. However, turning off notifications on one device will turn them off on all devices.
+            </p>
+        </section>
+        <p>
+            <label class="js-enable-push-switch mdl-checkbox mdl-switch mdl-js-switch mdl-js-ripple-effect" for="enable-push-switch">
+                <input type="checkbox" id="enable-push-switch" class="mdl-switch__input">
+                <span class="js-enable-push-switch-label mdl-switch__label">Push Notifications</span>
+            </label>
+        </p>
+    </main>
+
+    <script src="../Scripts/MailTrack/mailtrack.js"></script>
+
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 </body>
 </html>

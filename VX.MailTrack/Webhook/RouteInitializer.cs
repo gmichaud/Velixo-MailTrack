@@ -12,7 +12,8 @@ namespace VX.MailTrack.Webhook
     public class RouteInitializer
     {
         private readonly ILifetimeScope _container;
-        internal const string MailTrackRouteBase = "MailTrack";
+        internal const string MailTrackEventRoute = "MailTrack/event";
+        internal const string MailTrackNotificationSubscribeRoute = "MailTrack/subscribe";
 
         public RouteInitializer(ILifetimeScope container)
         {
@@ -21,7 +22,8 @@ namespace VX.MailTrack.Webhook
 
         public void InitializeRoutes()
         {
-            RouteTable.Routes.Add(new Route($"{MailTrackRouteBase}/event", _container.Resolve<RouteHandler<SendGrid.EventRequestHandler>>()));
+            RouteTable.Routes.Add(new Route($"{MailTrackEventRoute}", _container.Resolve<RouteHandler<SendGrid.EventRequestHandler>>()));
+            RouteTable.Routes.Add(new Route($"{MailTrackNotificationSubscribeRoute}", _container.Resolve<RouteHandler<Notifications.SubscribeRequestHandler>>()));
         }
     }
 }

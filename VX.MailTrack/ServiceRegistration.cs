@@ -16,18 +16,40 @@ namespace VX.MailTrack
         {
             builder.RegisterGeneric(typeof(Webhook.RouteHandler<>)).InstancePerDependency();
             builder.RegisterType<Webhook.SendGrid.EventRequestHandler>().SingleInstance();
+            builder.RegisterType<Webhook.Notifications.SubscribeRequestHandler>().SingleInstance();
             builder.ActivateOnApplicationStart<Webhook.RouteInitializer>(e => e.InitializeRoutes());
 
             builder
                 .RegisterInstance(new LocationSettings
                 {
-                    Path = "/" + Webhook.RouteInitializer.MailTrackRouteBase,
+                    Path = "/" + Webhook.RouteInitializer.MailTrackEventRoute,
                     Providers =
                     {
+                        //Called by SendGrid, which will pass credentials as basic HTTP auth
                         new ProviderSettings
                         {
                             Name = "basic",
                             Type = typeof (PX.SM.PXBasicAuthenticationModule).AssemblyQualifiedName
+                        }
+                    }
+                });
+
+            builder
+                .RegisterInstance(new LocationSettings
+                {
+                    Path = "/" + Webhook.RouteInitializer.MailTrackNotificationSubscribeRoute,
+                    Providers =
+                    {
+                        //Called by the MailTrackPushSetup.html page for a logged in user 
+                        new ProviderSettings
+                        {
+                            Name = "coockie",
+                            Type = typeof (CoockieAuthenticationModule).AssemblyQualifiedName
+                        },
+                        new ProviderSettings
+                        {
+                            Name = "anonymous",
+                            Type = typeof (AnonymousAuthenticationModule).AssemblyQualifiedName
                         }
                     }
                 });
