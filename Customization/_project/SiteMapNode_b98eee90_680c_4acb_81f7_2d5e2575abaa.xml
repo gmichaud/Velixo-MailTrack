@@ -1,0 +1,13 @@
+﻿<SiteMapNode>
+    <data-set>
+        <relations format-version="3" relations-version="20160101" main-table="SiteMap" />
+        <layout>
+            <table name="SiteMap" />
+        </layout>
+        <data>
+            <SiteMap>
+                <row Position="1155" Title="Push Notification Setup" Url="~/Pages/VX/VX202610.aspx" Expanded="0" IsFolder="0" ScreenID="VX202610" NodeID="b98eee90-680c-4acb-81f7-2d5e2575abaa" ParentID="84351bc9-bf6c-48b5-9dea-f8207283b64a" />
+            </SiteMap>
+        </data>
+    </data-set>
+</SiteMapNode>

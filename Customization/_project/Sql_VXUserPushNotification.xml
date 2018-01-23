@@ -1,0 +1,14 @@
+﻿<Sql TableName="VXUserPushNotification" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="VXUserPushNotification">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="UserID" type="UniqueIdentifier" />
+  <col name="Endpoint" type="VarChar(255)" />
+  <col name="ReceiverKey" type="VarChar(255)" nullable="true" />
+  <col name="AuthKey" type="VarChar(255)" nullable="true" />
+  <index name="VXUserPushNotification_PK" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="UserID" />
+    <col name="Endpoint" />
+  </index>
+</table>]]></CDATA>
+</Sql>

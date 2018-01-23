@@ -6,7 +6,6 @@
   <index name="VXEmailID_PK" clustered="true" primary="true" unique="true">
     <col name="CompanyID" />
     <col name="RemoteMessageID" />
-    <col name="InternalMessageID" />
   </index>
 </table>]]></CDATA>
 </Sql>
