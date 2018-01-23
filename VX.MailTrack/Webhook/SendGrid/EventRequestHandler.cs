@@ -47,31 +47,38 @@ namespace VX.MailTrack.Webhook.SendGrid
                 PXTrace.WriteError("VX.MailTrack No e-mail message found in Acumatica for SendGrid MessageID " + e.SendGridMessageID);
                 return;
             }
-
+            
             //Insert event; duplicates are possible as per the SendGrid documentation, but since EventID is a key we will simply discard it when inserting
             var emailEvent = new VXEMailEvent();
             emailEvent.EventID = e.EventID;
             emailEvent.EventDate = UnixTimeStampToDateTime(e.Timestamp);
             emailEvent.NoteID = email.NoteID;
-            
+
+            string pushMessage = "";
+
             switch (e.EventType.ToLower())
             {
                 case "dropped":
+                    pushMessage = $"Dropped - {email.Subject}";
                     emailEvent.EventType = MailEventType.Dropped;
                     emailEvent.Description = e.Reason;
                     break;
                 case "delivered":
+                    pushMessage = $"Delivered - {email.Subject}";
                     emailEvent.EventType = MailEventType.Delivered;
                     break;
                 case "bounce":
+                    pushMessage = $"Bounced - {email.Subject}";
                     emailEvent.EventType = MailEventType.Bounce;
                     emailEvent.Description = e.Reason;
                     break;
                 case "open":
+                    pushMessage = $"Opened - {email.Subject}";
                     emailEvent.EventType = MailEventType.Open;
                     emailEvent.Description = e.UserAgent;
                     break;
                 case "click":
+                    pushMessage = $"Link Clicked - {email.Subject} ({e.Url})";
                     emailEvent.EventType = MailEventType.Click;
                     emailEvent.Description = e.Url;
                     break;
@@ -83,6 +90,12 @@ namespace VX.MailTrack.Webhook.SendGrid
 
             graph.Events.Insert(emailEvent);
             graph.Actions.PressSave();
+            
+            foreach(VXUserPushNotification pushNotification in graph.PushNotifications.Select(email.CreatedByID))
+            {
+                //Just fire and forget
+                var task = PushHelper.SendPushNotificationAsync(pushNotification, pushMessage);
+            }
         }
 
         private static DateTime UnixTimeStampToDateTime(long unixTimeStamp)
