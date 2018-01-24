@@ -12,7 +12,7 @@ using PX.Objects.CR;
 
 namespace VX.MailTrack.Webhook.SendGrid
 {
-    class EventRequestHandler : RequestHandlerBase<List<SendGridEvent>>
+    class EventRequestHandler : WebhookRequestHandlerBase<List<SendGridEvent>>
     {
         public override void ProcessRequest(List<SendGridEvent> requestData)
         {
@@ -54,31 +54,35 @@ namespace VX.MailTrack.Webhook.SendGrid
             emailEvent.EventDate = UnixTimeStampToDateTime(e.Timestamp);
             emailEvent.NoteID = email.NoteID;
 
-            string pushMessage = "";
+            var pushMessage = new PushHelper.PushMessage();
+            pushMessage.NoteID = email.NoteID;
+            pushMessage.RefNoteID = email.RefNoteID;
+            pushMessage.Body = email.Subject;
 
             switch (e.EventType.ToLower())
             {
                 case "dropped":
-                    pushMessage = $"Dropped - {email.Subject}";
+                    pushMessage.Title = $"Message Dropped {e.Email}";
                     emailEvent.EventType = MailEventType.Dropped;
                     emailEvent.Description = e.Reason;
                     break;
                 case "delivered":
-                    pushMessage = $"Delivered - {email.Subject}";
+                    pushMessage.Title = $"Messages Delivered to {e.Email}";
                     emailEvent.EventType = MailEventType.Delivered;
                     break;
                 case "bounce":
-                    pushMessage = $"Bounced - {email.Subject}";
+                    pushMessage.Title = $"Message Bounced {e.Email}";
                     emailEvent.EventType = MailEventType.Bounce;
                     emailEvent.Description = e.Reason;
                     break;
                 case "open":
-                    pushMessage = $"Opened - {email.Subject}";
+                    pushMessage.Title = $"Message Opened by {e.Email}";
                     emailEvent.EventType = MailEventType.Open;
                     emailEvent.Description = e.UserAgent;
                     break;
                 case "click":
-                    pushMessage = $"Link Clicked - {email.Subject} ({e.Url})";
+                    pushMessage.Title = $"Link Clicked by {e.Email}";
+                    pushMessage.Body += $" ({ e.Url})";
                     emailEvent.EventType = MailEventType.Click;
                     emailEvent.Description = e.Url;
                     break;
@@ -87,7 +91,7 @@ namespace VX.MailTrack.Webhook.SendGrid
                     emailEvent.Description = "Unhandled event type: " + e.EventType;
                     break;
             }
-
+            
             graph.Events.Insert(emailEvent);
             graph.Actions.PressSave();
             

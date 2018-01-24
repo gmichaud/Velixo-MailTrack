@@ -96,7 +96,7 @@
     <Compile Include="Webhook\Notifications\SubscribeRequestHandler.cs" />
     <Compile Include="Webhook\SendGrid\SendGridEvent.cs" />
     <Compile Include="Webhook\SendGrid\EventRequestHandler.cs" />
-    <Compile Include="Webhook\RequestHandlerBase.cs" />
+    <Compile Include="Webhook\WebhookRequestHandlerBase.cs" />
     <Compile Include="Webhook\RouteHandler.cs" />
     <Compile Include="ServiceRegistration.cs" />
     <Compile Include="Webhook\RouteInitializer.cs" />

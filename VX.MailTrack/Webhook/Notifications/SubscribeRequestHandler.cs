@@ -8,7 +8,7 @@ using PX.Common;
 
 namespace VX.MailTrack.Webhook.Notifications
 {
-    class SubscribeRequestHandler : RequestHandlerBase<SubscribeRequest>
+    class SubscribeRequestHandler : WebhookRequestHandlerBase<SubscribeRequest>
     {
         public override void ProcessRequest(SubscribeRequest requestData)
         {

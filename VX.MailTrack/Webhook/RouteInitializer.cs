@@ -14,6 +14,7 @@ namespace VX.MailTrack.Webhook
         private readonly ILifetimeScope _container;
         internal const string MailTrackEventRoute = "MailTrack/event";
         internal const string MailTrackNotificationSubscribeRoute = "MailTrack/subscribe";
+        internal const string MailTrackRedirectRoute = "MailTrack/redirect";
 
         public RouteInitializer(ILifetimeScope container)
         {
