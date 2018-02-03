@@ -31,11 +31,9 @@ The following actions/events are handled by MailTrack:
 * Clicked
 
 ### Using MailTrack
-A Tracking tab is added to the e-mail activity page:
+MailTrack adds a new Tracking tab to the e-mail activity page. Events that are received from SendGrid will be automatically added to the relevant e-mail, provided that this e-mail was originally sent through SendGrid:
 
 ![Tracking Tab](http://gmichaud.github.com/images/mailtrack/trackingtab.png)
-
-Events that are received from SendGrid will be automatically added to the relevant e-mail, provided that this e-mail was originally sent through SendGrid.
 
 ### Configuring Chrome Push Notifications
 Push Notifications are only available on Google Chrome for Windows/Mac/Android. Other browsers do not supported the required features. Please also note that your website must be accessed using HTTPS
