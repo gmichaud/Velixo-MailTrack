@@ -29,8 +29,14 @@
                                                 </AddItem>
                                                 <AddItem>
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                                                        <Prop Key="DataField" Value="EMail" />
+                                                        <Prop Key="Width" Value="300" />
+                                                    </PXGridColumn>
+                                                </AddItem>
+                                                <AddItem>
+                                                    <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="Description" />
-                                                        <Prop Key="Width" Value="400" />
+                                                        <Prop Key="Width" Value="800" />
                                                     </PXGridColumn>
                                                 </AddItem>
                                             </Children>

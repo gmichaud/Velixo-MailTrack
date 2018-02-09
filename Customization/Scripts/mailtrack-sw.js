@@ -8,7 +8,7 @@ self.addEventListener('push', function (event) {
         icon: 'icon.png',
         badge: 'badge.png',
         data: {
-            noteID: eventData.refNoteID
+            noteID: eventData.noteID
         }
     };
 

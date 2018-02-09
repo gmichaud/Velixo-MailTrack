@@ -53,6 +53,7 @@ namespace VX.MailTrack.Webhook.SendGrid
             emailEvent.EventID = e.EventID;
             emailEvent.EventDate = UnixTimeStampToDateTime(e.Timestamp);
             emailEvent.NoteID = email.NoteID;
+            emailEvent.EMail = e.Email;
 
             var pushMessage = new PushHelper.PushMessage();
             pushMessage.NoteID = email.NoteID;
@@ -67,7 +68,7 @@ namespace VX.MailTrack.Webhook.SendGrid
                     emailEvent.Description = e.Reason;
                     break;
                 case "delivered":
-                    pushMessage.Title = $"Messages Delivered to {e.Email}";
+                    pushMessage.Title = $"Message Delivered to {e.Email}";
                     emailEvent.EventType = MailEventType.Delivered;
                     break;
                 case "bounce":

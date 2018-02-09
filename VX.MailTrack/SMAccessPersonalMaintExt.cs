@@ -12,7 +12,7 @@ namespace VX.MailTrack
         [PXUIField(DisplayName = "Configure Push Notifications")]
         public void pushNotifications()
         {
-            throw new PXRedirectToUrlException("~/Frames/MailTrackPushSetup.html", PXBaseRedirectException.WindowMode.NewWindow, "Push Notifications");
+            throw new PXRedirectToUrlException("~/Frames/MailTrackPushSetup.aspx", PXBaseRedirectException.WindowMode.NewWindow, "Push Notifications");
         }
     }
 }

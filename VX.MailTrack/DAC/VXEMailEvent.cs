@@ -38,6 +38,11 @@ namespace VX.MailTrack
         [PXUIField(DisplayName = "Event Date", Enabled = false)]
         public DateTime? EventDate { get; set; }
 
+        public class email : IBqlField { }
+        [PXDBString(255, IsUnicode = true, InputMask = "")]
+        [PXUIField(DisplayName = "Email", Enabled = false)]
+        public string EMail { get; set; }
+
         public class description : IBqlField { }
         [PXDBString(255, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Description", Enabled = false)]
