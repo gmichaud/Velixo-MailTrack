@@ -10,9 +10,10 @@ namespace VX.MailTrack
 {
     public class EmailEventProcess : PXGraph<EmailEventProcess>
     {
-        public PXSelectJoin<SMEmail, InnerJoin<VXEmailID, On<SMEmail.messageId, Equal<VXEmailID.internalMessageID>>>, Where<VXEmailID.remoteMessageID, Equal<Required<VXEmailID.remoteMessageID>>>> EmailByRemoteId;
+        public PXSelectJoin<CRSMEmail, InnerJoin<VXEmailID, On<CRSMEmail.messageId, Equal<VXEmailID.internalMessageID>>>, Where<VXEmailID.remoteMessageID, Equal<Required<VXEmailID.remoteMessageID>>>> EmailByRemoteId;
         public PXSelect<VXEMailEvent, Where<VXEMailEvent.noteID, Equal<Required<VXEMailEvent.noteID>>>> Events;
         public PXSelect<VXEmailID, Where<VXEmailID.remoteMessageID, Equal<Required<VXEmailID.remoteMessageID>>>> RemoteMessageIds;
-        public PXSelect<VXUserPushNotification, Where<VXUserPushNotification.userID, Equal<Required<VXUserPushNotification.userID>>>> PushNotifications;
+        public PXSelect<VXUserPushNotification, Where<VXUserPushNotification.userID, Equal<Required<VXUserPushNotification.userID>>, 
+            Or<VXUserPushNotification.userID, Equal<Required<VXUserPushNotification.userID>>>>> PushNotifications;
     }
 }
