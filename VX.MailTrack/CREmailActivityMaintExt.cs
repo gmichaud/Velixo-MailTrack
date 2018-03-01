@@ -6,6 +6,6 @@ namespace VX.MailTrack
 {
     public class CREmailActivityMaintExt : PXGraphExtension<CREmailActivityMaint>
     {
-        public PXSelect<VXEMailEvent, Where<VXEMailEvent.noteID, Equal<Current<CRSMEmail.emailNoteID>>>, OrderBy<Desc<VXEMailEvent.eventDate>>> Events;
+        public PXSelect<VXEMailEvent, Where<VXEMailEvent.noteID, Equal<Current<CRSMEmail.noteID>>>, OrderBy<Desc<VXEMailEvent.eventDate>>> Events;
     }
 }
