@@ -17,33 +17,33 @@ namespace VX.MailTrack
     [Serializable]
     public class VXEMailEvent : IBqlTable
     {
-        public class eventID : IBqlField { }
+        public abstract class eventID : IBqlField { }
         [PXDBString(64, IsKey = true)]
         public string EventID { get; set; }
 
-        public class noteID : IBqlField { }
+        public abstract class noteID : IBqlField { }
         [PXDBGuid]
         public Guid? NoteID { get; set; }
 
-        public class eventType : IBqlField { }
+        public abstract class eventType : IBqlField { }
         [PXDBString(2, IsFixed = true, InputMask = "")]
         [PXUIField(DisplayName = "Event Type", Enabled = false)]
         [PXDefault]
         [PXStringList(new string[] { MailEventType.Dropped, MailEventType.Delivered, MailEventType.Bounce, MailEventType.Open, MailEventType.Click, MailEventType.Unknown }, new string[] { "Dropped", "Delivered", "Bounce", "Open", "Click", "Unknown" })]
         public string EventType { get; set; }
 
-        public class eventDate : IBqlField { }
+        public abstract class eventDate : IBqlField { }
         [PXDBDateAndTime]
         [PXDefault]
         [PXUIField(DisplayName = "Event Date", Enabled = false)]
         public DateTime? EventDate { get; set; }
 
-        public class email : IBqlField { }
+        public abstract class email : IBqlField { }
         [PXDBString(255, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Email", Enabled = false)]
         public string EMail { get; set; }
 
-        public class description : IBqlField { }
+        public abstract class description : IBqlField { }
         [PXDBString(255, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Description", Enabled = false)]
         public string Description { get; set; }

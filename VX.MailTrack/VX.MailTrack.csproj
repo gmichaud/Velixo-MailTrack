@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VX.MailTrack</RootNamespace>
     <AssemblyName>VX.MailTrack</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -49,17 +49,21 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Common">
-      <HintPath>..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\Bin\PX.Common.dll</HintPath>
+    <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\Bin\PX.Common.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Data">
-      <HintPath>..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\Bin\PX.Data.dll</HintPath>
+    <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\Bin\PX.Data.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Export">
-      <HintPath>..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\Bin\PX.Export.dll</HintPath>
+    <Reference Include="PX.Export, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\Bin\PX.Export.dll</HintPath>
     </Reference>
-    <Reference Include="PX.Objects">
-      <HintPath>..\..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\Bin\PX.Objects.dll</HintPath>
+    <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\Bin\PX.Objects.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -108,7 +112,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>SET ACUMATICAROOT="C:\Program Files (x86)\Acumatica ERP\AcumaticaDemo60"
+    <PostBuildEvent>SET ACUMATICAROOT="C:\Program Files\Acumatica ERP\AcumaticaDemo2018R2"
 xcopy %25ACUMATICAROOT%25\Pages\VX\VX202610* "$(SolutionDir)\Customization\Pages\VX\" /y
 xcopy %25ACUMATICAROOT%25\Frames\MailTrackPushSetup.html "$(SolutionDir)\Customization\Frames\" /y
 xcopy %25ACUMATICAROOT%25\Scripts\MailTrack\* "$(SolutionDir)\Customization\Scripts\" /y
@@ -119,7 +123,8 @@ copy %25ACUMATICAROOT%25\bin\Microsoft.Threading.Tasks.Extensions.dll "$(Solutio
 copy %25ACUMATICAROOT%25\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll "$(SolutionDir)\Customization\Bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll" /y
 copy %25ACUMATICAROOT%25\bin\VX.MailTrack.dll "$(SolutionDir)\Customization\Bin\VX.EditorServices.dll" /y
 if not exist "$(SolutionDir)\Release\" mkdir "$(SolutionDir)\Release\"
-if $(ConfigurationName)==Release $(SolutionDir)\CstBuildProject.exe /website %25ACUMATICAROOT%25 /in "$(SolutionDir)\Customization" /out "$(SolutionDir)\Release\VelixoMailTrack.zip"</PostBuildEvent>
+cd "$(SolutionDir)\Release\"
+if $(ConfigurationName)==Release %25ACUMATICAROOT%25\bin\PX.CommandLine.exe /method BuildProject /in "$(SolutionDir)Customization" /out "VelixoMailTrack.zip"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

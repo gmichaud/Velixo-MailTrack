@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AcumaticaDemo60", "http://localhost/AcumaticaDemo60", "{2A652927-7EF5-411C-8831-714CC67B5D06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VX.MailTrack", "VX.MailTrack\VX.MailTrack.csproj", "{FE33A1ED-42B3-487F-915E-DF016BC27068}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AcumaticaDemo2018R2", "http://localhost/AcumaticaDemo2018R2", "{CFC5092B-7888-454D-BC1E-41B43A351718}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.1"
 		ProjectReferences = "{fe33a1ed-42b3-487f-915e-df016bc27068}|VX.MailTrack.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/AcumaticaDemo60"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo60\"
+		Debug.AspNetCompiler.VirtualPath = "/AcumaticaDemo2018R2"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo2018R2\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/AcumaticaDemo60"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo60\"
+		Release.AspNetCompiler.VirtualPath = "/AcumaticaDemo2018R2"
+		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo2018R2\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\..\Program Files (x86)\Acumatica ERP\AcumaticaDemo60\"
+		SlnRelativePath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\"
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VX.MailTrack", "VX.MailTrack\VX.MailTrack.csproj", "{FE33A1ED-42B3-487F-915E-DF016BC27068}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +33,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2A652927-7EF5-411C-8831-714CC67B5D06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A652927-7EF5-411C-8831-714CC67B5D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A652927-7EF5-411C-8831-714CC67B5D06}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A652927-7EF5-411C-8831-714CC67B5D06}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{FE33A1ED-42B3-487F-915E-DF016BC27068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE33A1ED-42B3-487F-915E-DF016BC27068}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE33A1ED-42B3-487F-915E-DF016BC27068}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE33A1ED-42B3-487F-915E-DF016BC27068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC5092B-7888-454D-BC1E-41B43A351718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC5092B-7888-454D-BC1E-41B43A351718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC5092B-7888-454D-BC1E-41B43A351718}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC5092B-7888-454D-BC1E-41B43A351718}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

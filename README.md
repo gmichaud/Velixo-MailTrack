@@ -3,7 +3,8 @@
 A customization that integrates Acumatica with SendGrid to get detailed delivery, open and click-through information on your Acumatica e-mails. Also leverages Chrome push notifications to notify users instantly when one of the supported event occurs.
 
 ### Prerequisites
-* Acumatica 6.1 or later (tested with 6.10.1219, 17.205.0015)
+* Acumatica 2018 R2 or later (tested with 18.207.0006)
+* Older releases compatible with 6.1 and 2017 R2 (tested with 6.10.1219, 17.205.0015)
 * (Optional) For push notifications, your site must use HTTPS and Google Chrome for Windows/Mac/Android is required
 
 Quick Start
