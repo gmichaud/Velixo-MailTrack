@@ -121,7 +121,7 @@ copy %25ACUMATICAROOT%25\bin\BouncyCastle.Crypto.dll "$(SolutionDir)\Customizati
 copy %25ACUMATICAROOT%25\bin\Microsoft.Threading.Tasks.dll "$(SolutionDir)\Customization\Bin\Microsoft.Threading.Tasks.dll" /y
 copy %25ACUMATICAROOT%25\bin\Microsoft.Threading.Tasks.Extensions.dll "$(SolutionDir)\Customization\Bin\Microsoft.Threading.Tasks.Extensions.dll" /y
 copy %25ACUMATICAROOT%25\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll "$(SolutionDir)\Customization\Bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll" /y
-copy %25ACUMATICAROOT%25\bin\VX.MailTrack.dll "$(SolutionDir)\Customization\Bin\VX.EditorServices.dll" /y
+copy %25ACUMATICAROOT%25\bin\VX.MailTrack.dll "$(SolutionDir)\Customization\Bin\VX.MailTrack.dll" /y
 if not exist "$(SolutionDir)\Release\" mkdir "$(SolutionDir)\Release\"
 cd "$(SolutionDir)\Release\"
 if $(ConfigurationName)==Release %25ACUMATICAROOT%25\bin\PX.CommandLine.exe /method BuildProject /in "$(SolutionDir)Customization" /out "VelixoMailTrack.zip"</PostBuildEvent>
