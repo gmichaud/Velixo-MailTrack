@@ -51,19 +51,19 @@
     </Reference>
     <Reference Include="PX.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\Bin\PX.Common.dll</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\Shoebacca\Bin\PX.Common.dll</HintPath>
     </Reference>
     <Reference Include="PX.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\Bin\PX.Data.dll</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\Shoebacca\Bin\PX.Data.dll</HintPath>
     </Reference>
     <Reference Include="PX.Export, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3b136cac2f602b8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\Bin\PX.Export.dll</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\Shoebacca\Bin\PX.Export.dll</HintPath>
     </Reference>
     <Reference Include="PX.Objects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\Bin\PX.Objects.dll</HintPath>
+      <HintPath>..\..\..\Program Files\Acumatica ERP\Shoebacca\Bin\PX.Objects.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -93,9 +93,13 @@
     <Compile Include="DAC\VXEmailID.cs" />
     <Compile Include="DAC\VXUserPushNotification.cs" />
     <Compile Include="EmailEventProcess.cs" />
+    <Compile Include="JsonPathConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushHelper.cs" />
     <Compile Include="SMAccessPersonalMaintExt.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Webhook\Mailgun\EventRequestHandler.cs" />
+    <Compile Include="Webhook\Mailgun\MailgunEvent.cs" />
     <Compile Include="Webhook\Notifications\SubscribeRequest.cs" />
     <Compile Include="Webhook\Notifications\SubscribeRequestHandler.cs" />
     <Compile Include="Webhook\SendGrid\SendGridEvent.cs" />

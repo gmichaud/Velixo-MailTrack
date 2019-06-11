@@ -10,45 +10,25 @@ using System.Web;
 using PX.Data;
 using PX.Objects.CR;
 
-namespace VX.MailTrack.Webhook.SendGrid
+namespace VX.MailTrack.Webhook.Mailgun
 {
-    class EventRequestHandler : WebhookRequestHandlerBase<List<SendGridEvent>>
+    class EventRequestHandler : WebhookRequestHandlerBase<MailgunEvent>
     {
-        public override void ProcessRequest(List<SendGridEvent> requestData)
+        public override void ProcessRequest(MailgunEvent e)
         {
+            //This is a quick & dirty reimplementation of the existing SendGrid hook to work with MailGun. There's obviously some code duplication that could be avoided.
+            //We also don't validate the signature sent by MailGun.
             var graph = PXGraph.CreateInstance<EmailEventProcess>();
-
-            foreach(var sgevent in requestData)
+            
+            //Locate Acumatica e-mail -- MailGun strips out the <> tags around the ID so add it back
+            CRSMEmail email = (CRSMEmail)graph.EmailById.Select("<" + e.MessageID + ">");
+            if (email == null)
             {
-                ProcessEvent(graph, sgevent);
-            }
-        }
-
-        private void ProcessEvent(EmailEventProcess graph, SendGridEvent e)
-        {
-            if (!String.IsNullOrEmpty(e.MessageID) && !String.IsNullOrEmpty(e.SendGridMessageID))
-            {
-                //Create link between internal Message ID and SendGrid MessageID for future events that will not include our own Message ID.
-                VXEmailID association = graph.RemoteMessageIds.Select(e.SendGridMessageID);
-                if(association == null)
-                {
-                    association = new VXEmailID();
-                    association.RemoteMessageID = e.SendGridMessageID;
-                    association.InternalMessageID = e.MessageID;
-                    graph.RemoteMessageIds.Insert(association);
-                    graph.Actions.PressSave();
-                }
-            }
-
-            //Locate Acumatica e-mail
-            CRSMEmail email = (CRSMEmail)graph.EmailByRemoteId.Select(e.SendGridMessageID);
-            if(email == null)
-            {
-                PXTrace.WriteError("VX.MailTrack No e-mail message found in Acumatica for SendGrid MessageID " + e.SendGridMessageID);
+                PXTrace.WriteError("VX.MailTrack No e-mail message found in Acumatica for Mailgun MessageID " + e.MessageID);
                 return;
             }
-            
-            //Insert event
+
+            //Insert event; duplicates are possible as per the SendGrid documentation, but since EventID is a key we will simply discard it when inserting
             var emailEvent = new VXEMailEvent();
             emailEvent.EventID = e.EventID;
             emailEvent.EventDate = Common.UnixTimeStampToDateTime(e.Timestamp);
@@ -62,42 +42,37 @@ namespace VX.MailTrack.Webhook.SendGrid
 
             switch (e.EventType.ToLower())
             {
-                case "dropped":
-                    pushMessage.Title = $"Message Dropped {e.Email}";
-                    emailEvent.EventType = MailEventType.Dropped;
-                    emailEvent.Description = e.Reason;
-                    break;
                 case "delivered":
                     pushMessage.Title = $"Message Delivered to {e.Email}";
                     emailEvent.EventType = MailEventType.Delivered;
                     break;
-                case "bounce":
-                    pushMessage.Title = $"Message Bounced {e.Email}";
-                    emailEvent.EventType = MailEventType.Bounce;
-                    emailEvent.Description = e.Reason;
-                    break;
-                case "open":
+                case "opened":
                     pushMessage.Title = $"Message Opened by {e.Email}";
                     emailEvent.EventType = MailEventType.Open;
                     emailEvent.Description = e.UserAgent;
                     break;
-                case "click":
+                case "clicked":
                     pushMessage.Title = $"Link Clicked by {e.Email}";
                     pushMessage.Body += $" ({ e.Url})";
                     emailEvent.EventType = MailEventType.Click;
                     emailEvent.Description = e.Url;
+                    break;
+                case "failed":
+                    pushMessage.Title = $"Message Failed {e.Email} ({e.Severity})";
+                    emailEvent.EventType = MailEventType.Bounce;
+                    emailEvent.Description = String.IsNullOrEmpty(e.DeliveryStatusDescription) ? e.DeliveryStatusMessage : e.DeliveryStatusDescription;
                     break;
                 default:
                     emailEvent.EventType = MailEventType.Unknown;
                     emailEvent.Description = "Unhandled event type: " + e.EventType;
                     break;
             }
-            
+
             graph.Events.Insert(emailEvent);
             graph.Actions.PressSave();
-            
+
             //Notifications are sent to the user who created e-mail message or who is the current owner (OwnerID will be setup for e-mails that are generated by e-mail processing)
-            foreach(VXUserPushNotification pushNotification in graph.PushNotifications.Select(email.CreatedByID, email.OwnerID))
+            foreach (VXUserPushNotification pushNotification in graph.PushNotifications.Select(email.CreatedByID, email.OwnerID))
             {
                 //Just fire and forget
                 var task = PushHelper.SendPushNotificationAsync(pushNotification, pushMessage);

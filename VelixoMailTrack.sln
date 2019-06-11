@@ -5,26 +5,26 @@ VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VX.MailTrack", "VX.MailTrack\VX.MailTrack.csproj", "{FE33A1ED-42B3-487F-915E-DF016BC27068}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AcumaticaDemo2018R2", "http://localhost/AcumaticaDemo2018R2", "{CFC5092B-7888-454D-BC1E-41B43A351718}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Shoebacca", "http://localhost/Shoebacca", "{CFC5092B-7888-454D-BC1E-41B43A351718}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.1"
 		ProjectReferences = "{fe33a1ed-42b3-487f-915e-df016bc27068}|VX.MailTrack.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/AcumaticaDemo2018R2"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo2018R2\"
+		Debug.AspNetCompiler.VirtualPath = "/Shoebacca"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\Shoebacca\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Shoebacca\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/AcumaticaDemo2018R2"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\AcumaticaDemo2018R2\"
+		Release.AspNetCompiler.VirtualPath = "/Shoebacca"
+		Release.AspNetCompiler.PhysicalPath = "..\..\Program Files\Acumatica ERP\Shoebacca\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Shoebacca\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\..\Program Files\Acumatica ERP\AcumaticaDemo2018R2\"
+		SlnRelativePath = "..\..\Program Files\Acumatica ERP\Shoebacca\"
 	EndProjectSection
 EndProject
 Global
